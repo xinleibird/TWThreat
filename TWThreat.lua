@@ -414,6 +414,10 @@ end)
 TWT.glowFader:SetScript("OnHide", function()
     this.startTime = GetTime()
 end)
+TWT.hideOOCScheduler = CreateFrame('Frame')
+TWT.hideOOCScheduler:Hide()
+TWT.hideOOCScheduler.elapsed = 0
+
 TWT.glowFader:SetScript("OnUpdate", function()
     local plus = 0.04
     local gt = GetTime() * 1000
@@ -489,6 +493,10 @@ function TWT.init()
     if TWT_CONFIG.visible then
         _G['TWTMain']:Show()
     else
+        _G['TWTMain']:Hide()
+    end
+
+    if TWT_CONFIG.hideOOC and not TWT_CONFIG.visible then
         _G['TWTMain']:Hide()
     end
 
@@ -988,6 +996,16 @@ function TWT.combatEnd()
 
     if TWT_CONFIG.hideOOC then
         _G['TWTMain']:Hide()
+
+        TWT.hideOOCScheduler.elapsed = 0
+        TWT.hideOOCScheduler:SetScript('OnUpdate', function(self, dt)
+            self.elapsed = self.elapsed + dt
+            if self.elapsed < 0.5 then return end
+            self:SetScript('OnUpdate', nil)
+            if TWT_CONFIG.hideOOC and not TWT.inCombat then
+                _G['TWTMain']:Hide()
+            end
+        end)
     end
 
     TWT.updateUI('combatEnd')
