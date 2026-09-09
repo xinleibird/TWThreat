@@ -287,13 +287,13 @@ TWT:SetScript("OnEvent", function()
             if __substr(arg2, 1, 11) == 'TWTVersion:' and arg4 ~= TWT.name then
                 if not TWT.showedUpdateNotification then
                     local verEx = __explode(arg2, ':')
-                    if TWT.version(verEx[2]) > TWT.version(TWT.addonVer) then
-                        twtprint('New version available ' ..
-                                TWT.classColors[TWT.class].c .. 'v' .. verEx[2] .. ' |cffffffff(current version ' ..
-                                TWT.classColors['paladin'].c .. 'v' .. TWT.addonVer .. '|cffffffff)')
-                        twtprint('Update at ' .. TWT.classColors[TWT.class].c .. 'https://github.com/MarcelineVQ/TWThreat')
-                        TWT.showedUpdateNotification = true
-                    end
+                    -- if TWT.version(verEx[2]) > TWT.version(TWT.addonVer) then
+                    --     twtprint('New version available ' ..
+                    --             TWT.classColors[TWT.class].c .. 'v' .. verEx[2] .. ' |cffffffff(current version ' ..
+                    --             TWT.classColors['paladin'].c .. 'v' .. TWT.addonVer .. '|cffffffff)')
+                    --     twtprint('Update at ' .. TWT.classColors[TWT.class].c .. 'https://github.com/MarcelineVQ/TWThreat')
+                    --     TWT.showedUpdateNotification = true
+                    -- end
                 end
                 return true
             end
