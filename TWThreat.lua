@@ -503,7 +503,7 @@ function TWT.init()
     if TWT_CONFIG.tankMode then
         _G['TWTMainSettingsFullScreenGlow']:SetChecked(TWT_CONFIG.fullScreenGlow)
         _G['TWTMainSettingsFullScreenGlow']:Disable()
-        _G['TWTMainSettingsAggroSound']:SetChecked(TWT_CONFIG.fullScreenGlow)
+        _G['TWTMainSettingsAggroSound']:SetChecked(TWT_CONFIG.aggroSound)
         _G['TWTMainSettingsAggroSound']:Disable()
     end
 
@@ -1506,7 +1506,7 @@ TWT.threatQuery:SetScript("OnUpdate", function()
 
             if TWT_CONFIG.glow or TWT_CONFIG.perc or
                     TWT_CONFIG.glowPFUI or TWT_CONFIG.percPFUI or
-                    TWT_CONFIG.fullScreenGlow or TWT_CONFIG.tankmode or
+                    TWT_CONFIG.fullScreenGlow or TWT_CONFIG.tankMode or
                     TWT_CONFIG.visible then
                 if TWT.healerMasterTarget == '' then
                     TWT.UnitDetailedThreatSituation(TWT_CONFIG.visibleBars - 1)
