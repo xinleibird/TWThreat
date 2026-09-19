@@ -1495,7 +1495,7 @@ TWT.threatQuery:SetScript("OnUpdate", function()
         if GetNumRaidMembers() == 0 and GetNumPartyMembers() == 0 then
             return false
         end
-        if UnitAffectingCombat('target') then
+        if UnitAffectingCombat('target') and UnitAffectingCombat('player') then
             TWT.combatStart()
             if TWT.targetName == '' then
                 twtdebug('threatQuery target = blank ')
